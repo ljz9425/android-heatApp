@@ -1,0 +1,405 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:com="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="10px"
+                android:layout_marginRight="10px"
+                android:background="@color/sd_color_white"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/ll_detail_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5px"
+                    android:visibility="visible">
+                    <ImageView
+                        android:layout_width="50px"
+                        android:layout_marginLeft="10px"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ico_msg_notice"/>
+                    <TextView
+                        android:id="@+id/detail_fault"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="10px"
+                        android:text="暂无故障信息"
+                        android:textSize="44px"
+                        android:textColor="@color/sd_color_red"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="180px"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10px"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/detail_top_bg" >
+
+                    <ImageView
+                        android:id="@+id/iv_detail_weather_icon"
+                        android:layout_width="120px"
+                        android:layout_height="120px"
+                        android:layout_gravity="center"
+                        android:src="@drawable/vector_drawable_999_fill" />
+                    <TextView
+                        android:id="@+id/tv_detail_weather_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_marginLeft="15px"
+                        android:layout_marginTop="5px"
+                        android:text="12℃\n多云"
+                        android:textSize="@dimen/detail_item_font_size"
+                        android:textColor="@color/color_3b3b3b"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingLeft="30px">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginTop="20px"
+                            android:orientation="horizontal" >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:layout_marginLeft="30px"
+                                android:text="今日天气"
+                                android:textSize="@dimen/detail_item_font_size"
+                                android:textColor="@color/color_3b3b3b"/>
+                            <TextView
+                                android:id="@+id/tv_detail_weather_day"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:layout_marginLeft="30px"
+                                android:text="11℃/-2℃ 西南风 3-4级"
+                                android:textSize="@dimen/detail_item_font_size"
+                                android:textColor="@color/color_3b3b3b"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:layout_marginLeft="30px"
+                                android:text="数据时间"
+                                android:textSize="@dimen/detail_item_font_size"
+                                android:textColor="@color/color_3b3b3b"/>
+                            <TextView
+                                android:id="@+id/detail_lastTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:layout_marginLeft="30px"
+                                android:text="2021-12-21 17:00:32"
+                                android:textSize="@dimen/detail_item_font_size"
+                                android:textColor="@color/color_3b3b3b"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10px"
+                    android:orientation="horizontal">
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_run_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        com:title = "设备状态"
+                        com:image = "@drawable/vector_run_state"
+                        com:value = "开机"
+                        com:showSetup = "true" />
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_run_model"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_weight="1"
+                        com:title = "运行模式"
+                        com:image = "@drawable/vector_run_model"
+                        com:value = "制热"
+                        com:showSetup = "false" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10px"
+                    android:orientation="horizontal">
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_set_temp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        com:title = "设定温度"
+                        com:image = "@drawable/vector_set_temp"
+                        com:value = "40℃"
+                        com:showSetup = "false" />
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_env_temp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_weight="1"
+                        com:title = "环境温度"
+                        com:image = "@drawable/vector_evn_temp"
+                        com:value = "4℃"
+                        com:showSetup = "false" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10px"
+                    android:orientation="horizontal">
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_send_temp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        com:title = "供水温度"
+                        com:image = "@drawable/vector_send_temp"
+                        com:value = "40℃"
+                        com:showSetup = "false" />
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_back_temp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_weight="1"
+                        com:title = "回水温度"
+                        com:image = "@drawable/vector_back_temp"
+                        com:value = "48℃"
+                        com:showSetup = "false" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10px"
+                    android:orientation="horizontal">
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_volt_a"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        com:title = "A相电压"
+                        com:image = "@drawable/vector_power_volt"
+                        com:value = "未知"
+                        com:showSetup = "false" />
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_elec_a"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_weight="1"
+                        com:title = "A相电流"
+                        com:image = "@drawable/vector_power_elec"
+                        com:value = "未知"
+                        com:showSetup = "false" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10px"
+                    android:orientation="horizontal">
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_volt_b"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        com:title = "B相电压"
+                        com:image = "@drawable/vector_power_volt"
+                        com:value = "未知"
+                        com:showSetup = "false" />
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_elec_b"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_weight="1"
+                        com:title = "B相电流"
+                        com:image = "@drawable/vector_power_elec"
+                        com:value = "未知"
+                        com:showSetup = "false" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10px"
+                    android:orientation="horizontal">
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_volt_c"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        com:title = "C相电压"
+                        com:image = "@drawable/vector_power_volt"
+                        com:value = "未知"
+                        com:showSetup = "false" />
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_elec_c"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_weight="1"
+                        com:title = "C相电流"
+                        com:image = "@drawable/vector_power_elec"
+                        com:value = "未知"
+                        com:showSetup = "false" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10px"
+                    android:orientation="horizontal">
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_power_active"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        com:title = "有功功率"
+                        com:image = "@drawable/vector_power_power"
+                        com:value = "未知"
+                        com:showSetup = "false" />
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_power_total"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_weight="1"
+                        com:title = "当前电量"
+                        com:image = "@drawable/vector_power_total"
+                        com:value = "未知"
+                        com:showSetup = "false" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10px"
+                    android:orientation="horizontal">
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_heat_flow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        com:title = "瞬时流量"
+                        com:image = "@drawable/vector_heat_flow"
+                        com:value = "未知"
+                        com:showSetup = "false" />
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_heat_total_flow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_weight="1"
+                        com:title = "累计流量"
+                        com:image = "@drawable/vector_heat_total_flow"
+                        com:value = "未知"
+                        com:showSetup = "false" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10px"
+                    android:orientation="horizontal">
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_heat_power"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        com:title = "功率"
+                        com:image = "@drawable/vector_heat_power"
+                        com:value = "未知"
+                        com:showSetup = "false" />
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_heat_total"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_weight="1"
+                        com:title = "累计热量"
+                        com:image = "@drawable/vector_heat_total"
+                        com:value = "未知"
+                        com:showSetup = "false" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10px"
+                    android:orientation="horizontal">
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_heat_in_temp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        com:title = "进水温度"
+                        com:image = "@drawable/vector_heat_send_temp"
+                        com:value = "未知"
+                        com:showSetup = "false" />
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_heat_out_temp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_weight="1"
+                        com:title = "出水温度"
+                        com:image = "@drawable/vector_heat_back_temp"
+                        com:value = "未知"
+                        com:showSetup = "false" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10px"
+                    android:orientation="horizontal">
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_pressure_send"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        com:title = "供水压力"
+                        com:image = "@drawable/vector_pressure_send"
+                        com:value = "未知"
+                        com:showSetup = "false" />
+                    <com.whisht.heatapp.view.control.DetailItem
+                        android:id="@+id/detail_pressure_back"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_weight="1"
+                        com:title = "出水压力"
+                        com:image = "@drawable/vector_pressure_back"
+                        com:value = "未知"
+                        com:showSetup = "false" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</FrameLayout>

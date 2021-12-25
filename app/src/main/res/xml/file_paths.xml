@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <root-path path="" name="heatApp" />
+    <!-- 内部存储空间应用私有目录下的 files -->
+    <files-path name="images_files" path="Pictures" />
+    <!-- 内部存储空间应用私有目录下的 cache -->
+    <cache-path name="images_cache" path="Pictures"/>
+    <!-- 外部存储空间根目录 -->
+    <external-path name="images_ext_root" path="Pictures" />
+    <!-- 外部存储空间应用私有目录files -->
+    <external-files-path name="images_ext_files" path="Pictures" />
+    <!-- 外部存储空间应用私有目录cache -->
+    <external-cache-path name="images_ext_cache" path="Pictures"/>
+
+    <!-- 内部存储空间应用私有目录下的 files -->
+    <files-path name="download_files" path="Download" />
+    <!-- 内部存储空间应用私有目录下的 cache -->
+    <cache-path name="download_cache" path="Download"/>
+    <!-- 外部存储空间根目录 -->
+    <external-path name="download_ext_root" path="Download" />
+    <!-- 外部存储空间应用私有目录files -->
+    <external-files-path name="download_ext_files" path="Download" />
+    <!-- 外部存储空间应用私有目录cache -->
+    <external-cache-path name="download_ext_cache" path="Download"/>
+
+</paths>

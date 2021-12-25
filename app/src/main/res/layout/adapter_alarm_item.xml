@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/sd_color_white"
+    android:layout_marginLeft="20px"
+    android:layout_marginRight="20px"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80px"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+        <TextView
+            android:id="@+id/am_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2021-12-24 22:34:32"
+            android:textSize="@dimen/detail_item_font_size"
+            android:textColor="@color/color_3b3b3b"/>
+        <TextView
+            android:id="@+id/am_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10px"
+            android:text=""
+            android:textSize="@dimen/detail_item_font_size"
+            android:textColor="@color/font_dark_gray"
+            android:layout_marginLeft="20px"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/am_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10px"
+        android:gravity="center_vertical"
+        android:text="“于村中心校”离线，请检查通讯模块工作状态。"
+        android:textSize="@dimen/detail_item_font_size"
+        android:textColor="@color/color_3b3b3b" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/split_item_height"
+        android:background="@color/colorLightGray" />
+</LinearLayout>

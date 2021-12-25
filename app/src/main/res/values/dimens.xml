@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="main_diver">32px</dimen>
+    <dimen name="nav_item_width">154px</dimen>
+    <dimen name="nav_item_size">131px</dimen>
+    <dimen name="nav_item_margin_top">131px</dimen>
+    <dimen name="nav_item_font_size">32px</dimen>
+    <dimen name="nav_item_font_margintop">7px</dimen>
+    <dimen name="padding_truck_info">20px</dimen>
+    <dimen name="main_tool_image_width">56px</dimen>
+    <dimen name="main_tool_image_heigth">56px</dimen>
+    <dimen name="main_menu_image_width">60px</dimen>
+    <dimen name="main_menu_image_heigth">60px</dimen>
+    <dimen name="main_bottom_text_size">42px</dimen>
+
+    <dimen name="style_button_size">60px</dimen>
+    <!-- 编辑器中图片的宽度 -->
+    <dimen name="editor_image_width">120dp</dimen>
+    <!-- 编辑器中长图显示最大高度 -->
+    <dimen name="editor_image_max_height">1000dp</dimen>
+    <dimen name="editor_padding_left">15dp</dimen>
+    <dimen name="editor_padding_right">15dp</dimen>
+    <dimen name="editor_game_height">70dp</dimen>
+    <dimen name="tab_item_font_size">44px</dimen>
+    <dimen name="detail_item_font_size">48px</dimen>
+
+    <dimen name="split_item_height">5px</dimen>
+    <dimen name="split_group_height">20px</dimen>
+    <dimen name="device_config_font_size">56px</dimen>
+</resources>

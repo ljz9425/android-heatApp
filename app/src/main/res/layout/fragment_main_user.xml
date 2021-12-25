@@ -1,0 +1,309 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="@color/sd_color_white"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/layout_common_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_person"
+            android:layout_width="match_parent"
+            android:layout_height="200px"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="@color/colorWhite">
+
+            <ImageView
+                android:id="@+id/iv_head_img"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/ico_account"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="60px"
+                android:layout_marginRight="20px"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="left"
+                    android:gravity="bottom"
+                    android:text=""
+                    android:textStyle="bold"
+                    android:textSize="64px"
+                    android:textColor="@color/color_3b3b3b"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="left"
+                        android:gravity="top"
+                        android:text=""
+                        android:textSize="48px"
+                        android:textColor="@color/colorWordGray"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical">
+                <ImageView
+                    android:layout_width="30px"
+                    android:layout_height="50px"
+                    android:layout_marginRight="30px"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ico_right_arrow_01"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:layout_marginTop="6dp"
+        android:background="@color/colorWhite">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="@color/colorLightGray">
+            </View>
+
+            <LinearLayout
+                android:id="@+id/ll_xitongshezhi"
+                android:layout_width="match_parent"
+                android:layout_height="160px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:paddingLeft="16dp"
+                    android:gravity="center_vertical"
+                    android:text="密码设置"
+                    android:textSize="48px"
+                    android:textColor="@color/color_3b3b3b"/>
+
+                <LinearLayout
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical">
+                    <ImageView
+                        android:layout_width="30px"
+                        android:layout_height="50px"
+                        android:layout_marginRight="30px"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ico_right_arrow_01"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="@color/colorLightGray">
+            </View>
+            <LinearLayout
+                android:id="@+id/detailSettings"
+                android:layout_width="match_parent"
+                android:layout_height="160px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:paddingLeft="16dp"
+                    android:gravity="center_vertical"
+                    android:text="设置说明"
+                    android:textSize="48px"
+                    android:textColor="@color/color_3b3b3b"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical">
+                    <ImageView
+                        android:layout_width="30px"
+                        android:layout_height="50px"
+                        android:layout_marginRight="30px"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ico_right_arrow_01"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="@color/colorLightGray">
+            </View>
+
+            <LinearLayout
+                android:id="@+id/devInfo"
+                android:layout_width="match_parent"
+                android:layout_height="160px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:paddingLeft="16dp"
+                    android:gravity="center_vertical"
+                    android:text="设备信息"
+                    android:textSize="48px"
+                    android:textColor="@color/color_3b3b3b"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical">
+                    <ImageView
+                        android:layout_width="30px"
+                        android:layout_height="50px"
+                        android:layout_marginRight="30px"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ico_right_arrow_01"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="@color/colorLightGray">
+            </View>
+            <LinearLayout
+                android:id="@+id/ll_update_info"
+                android:layout_width="match_parent"
+                android:layout_height="160px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:layout_gravity="center"
+                    android:paddingLeft="16dp"
+                    android:gravity="center_vertical"
+                    android:text="检测更新"
+                    android:textSize="48px"
+                    android:textColor="@color/color_3b3b3b"/>
+
+                <TextView
+                    android:id="@+id/versionEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:text=""
+                    android:textSize="38px"
+                    android:textColor="@color/gray"/>
+
+                <TextView
+                    android:id="@+id/tv_is_have_new"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:text="有更新！"
+                    android:textSize="38px"
+                    android:textStyle="bold"
+                    android:textColor="@color/sd_color_red"
+                    android:visibility="invisible"/>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical">
+                    <ImageView
+                        android:layout_width="30px"
+                        android:layout_height="50px"
+                        android:layout_marginRight="30px"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ico_right_arrow_01"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:background="@color/colorLightGray">
+            </View>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_marginVertical="30px"
+            android:layout_marginHorizontal="30px"
+            android:text="注销"
+            android:textSize="48px"
+            android:background="@drawable/btn_selector_logout"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+</LinearLayout>

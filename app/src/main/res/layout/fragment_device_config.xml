@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:com="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/split_item_height"
+                    android:background="@color/colorLightGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="自动控制"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <Switch
+                        android:id="@+id/dc_ctrl_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="20px"
+                        android:showText="true"
+                        android:switchPadding="30px"
+                        android:textOn="开"
+                        android:textOff="关"
+                        android:thumb="@drawable/thumb"
+                        android:track="@drawable/track"   />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/split_item_height"
+                    android:background="@color/colorLightGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="周六控制"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <Switch
+                        android:id="@+id/dc_ctrl_saturday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="20px"
+                        android:showText="true"
+                        android:switchPadding="30px"
+                        android:textOn="开"
+                        android:textOff="关"
+                        android:thumb="@drawable/thumb"
+                        android:track="@drawable/track" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/split_item_height"
+                    android:background="@color/colorLightGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="周日控制"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <Switch
+                        android:id="@+id/dc_ctrl_sunday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="20px"
+                        android:showText="true"
+                        android:switchPadding="30px"
+                        android:textOn="开"
+                        android:textOff="关"
+                        android:thumb="@drawable/thumb"
+                        android:track="@drawable/track" />
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/split_item_height"
+                    android:background="@color/colorLightGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="室温控制"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:id="@+id/dc_room_temp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|right"
+                        android:text="20"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text=" ℃ "
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/split_item_height"
+                    android:background="@color/colorLightGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="运行区间"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+
+                    <TextView
+                        android:id="@+id/dc_start_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|right"
+                        android:text="11月01日"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="10px"
+                        android:paddingRight="10px"
+                        android:gravity="center"
+                        android:text="—"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+
+                    <TextView
+                        android:id="@+id/dc_stop_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|right"
+                        android:paddingRight="0px"
+                        android:text="03月15日"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/split_group_height"
+                android:background="@color/colorLightGray" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="定时控制1"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <Switch
+                        android:id="@+id/dc_ctrl_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="20px"
+                        android:showText="true"
+                        android:switchPadding="30px"
+                        android:textOn="开"
+                        android:textOff="关"
+                        android:thumb="@drawable/thumb"
+                        android:track="@drawable/track"   />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/split_item_height"
+                    android:background="@color/colorLightGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120px"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="              设定温度"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:id="@+id/dc_back_temp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|right"
+                        android:text="0"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text=" ℃ "
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/split_item_height"
+                    android:background="@color/colorLightGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120px"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="              启动时间"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:id="@+id/dc_start_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|right"
+                        android:text="00:00"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="10px"
+                        android:paddingRight="10px"
+                        android:gravity="center"
+                        android:text="—"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:id="@+id/dc_stop_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|right"
+                        android:paddingRight="0px"
+                        android:text="00:00"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/split_group_height"
+                android:background="@color/colorLightGray" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="定时控制2"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <Switch
+                        android:id="@+id/dc_ctrl_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="20px"
+                        android:showText="true"
+                        android:switchPadding="30px"
+                        android:textOn="开"
+                        android:textOff="关"
+                        android:thumb="@drawable/thumb"
+                        android:track="@drawable/track"   />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/split_item_height"
+                    android:background="@color/colorLightGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120px"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="              设定温度"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:id="@+id/dc_back_temp2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|right"
+                        android:text="0"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text=" ℃ "
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/split_item_height"
+                    android:background="@color/colorLightGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120px"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="              启动时间"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:id="@+id/dc_start_time2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|right"
+                        android:text="00:00"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="10px"
+                        android:paddingRight="10px"
+                        android:gravity="center"
+                        android:text="—"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:id="@+id/dc_stop_time2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|right"
+                        android:paddingRight="0px"
+                        android:text="00:00"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/split_group_height"
+                android:background="@color/colorLightGray" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="定时控制3"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <Switch
+                        android:id="@+id/dc_ctrl_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="20px"
+                        android:showText="true"
+                        android:switchPadding="30px"
+                        android:textOn="开"
+                        android:textOff="关"
+                        android:thumb="@drawable/thumb"
+                        android:track="@drawable/track"   />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/split_item_height"
+                    android:background="@color/colorLightGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120px"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="              设定温度"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:id="@+id/dc_back_temp3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|right"
+                        android:text="0"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text=" ℃ "
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/split_item_height"
+                    android:background="@color/colorLightGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120px"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="              启动时间"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:id="@+id/dc_start_time3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|right"
+                        android:text="00:00"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="10px"
+                        android:paddingRight="10px"
+                        android:gravity="center"
+                        android:text="—"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:id="@+id/dc_stop_time3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|right"
+                        android:paddingRight="0px"
+                        android:text="00:00"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:layout_marginTop="30px"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:id="@+id/dc_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/panel_login_buttion_shape"
+                android:text="保存配置"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/device_config_font_size" />
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/main_back_color">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <FrameLayout
+            android:id="@+id/fl_index_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <ImageView
+                android:id="@+id/iv_index"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"/>
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:src="@drawable/ic_close_pic"
+                android:layout_marginTop="100px"
+                android:layout_marginEnd="60px"
+                android:layout_gravity="top|right"/>
+
+        </FrameLayout>
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/main_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/main_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="136px"
+        app:tabIndicatorHeight="0px"
+        android:paddingTop="10px"
+        app:tabRippleColor = "@android:color/transparent">
+    </com.google.android.material.tabs.TabLayout>
+
+</LinearLayout>

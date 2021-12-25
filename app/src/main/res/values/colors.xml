@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorBlackTran">#99000000</color>
+    <color name="colorWhite">#FFF</color>
+    <color name="colorWhiteTran">#CCFFFFFF</color>
+    <color name="colorBule">#52b9fe</color>
+    <color name="colorGreen">#33E01F</color>
+    <color name="colorLightBlue">#B1D4FA</color>
+    <color name="colorGrayBlue">#E4EDF8</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_7e7e7e">#7e7e7e</color>
+    <color name="color_3b3b3b">#3b3b3b</color>
+    <color name="colorGray">#dedede</color>
+    <color name="colorLightGray">#f5f5f5</color>
+    <color name="color_b4b4b4">#b4b4b4</color>
+    <color name="color_f0f0f0">#f0f0f0</color>
+    <color name="colorWordGray">#969696</color>
+    <color name="color_787878">#787878</color>
+    <color name="color_52b9ff">#52b9ff</color>
+    <color name="colorStationSomeClose">#ffcf22</color>
+    <color name="color_yellow">#FFE500</color>
+    <color name="colorStationClose">#ff5251</color>
+    <color name="colorStationOpen">#5994ff</color>
+
+    <color name="colorGray_transparent">#33b4b4b4</color>
+    <color name="font_dark_gray">#7A7A7A</color>
+    <color name="color_call_press">#ff4d40</color>
+
+    <color name="radioSelect">#999</color>
+    <color name="transparent">#00000000</color>
+    <color name="result_view">#b0000000</color>
+
+    <color name="date_picker_bg">#FFFFFF</color>
+    <color name="date_picker_divider">#11112233</color>
+    <color name="date_picker_text_light">#59B29C</color>
+    <color name="date_picker_text_dark">#333333</color>
+    <color name="lightBlue">#70B8FF</color>
+
+
+    <!-- common -->
+    <color name="toptitle2">#3A3A3A</color>
+    <color name="common_title_diver">#dedede</color>
+    <color name="common_line">#333333</color>
+    <color name="common_title_back_color">#349AFF</color>
+    <color name="edit_back_color">#EDEDED</color>
+    <color name="sd_color_black">#000000</color>
+    <color name="sd_color_white">#FFFFFF</color>
+    <color name="sd_color_red">#fa0303</color>
+    <color name="sd_color_blue">#1E90FF</color>
+
+    <!-- 主页 -->
+    <color name="main_back_color">#EDEDED</color>
+    <color name="mainSplitBottom">#070002</color>
+    <color name="mainBottomTitle">#3A3A3A</color>
+    <color name="mainBottomTitleSelect">#96CAFE</color>
+    <color name="main_title_back">#3399FF</color>
+    <color name="zanMainUser">#0081FF</color>
+
+
+    <color name="gray">#686868</color>
+
+
+</resources>
