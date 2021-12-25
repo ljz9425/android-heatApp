@@ -79,4 +79,8 @@ public interface NetWorkService {
     @Headers({"Content-Type: application/json"})
     Observable<ResponseBody> queryAlarm(@Body RequestBody requestBody);
 
+    @POST("queryDeviceListForMap")
+    @Headers({"Content-Type: application/json"})
+    Observable<ResponseBody> queryDeviceListForMap(@Body RequestBody requestBody);
+
 }

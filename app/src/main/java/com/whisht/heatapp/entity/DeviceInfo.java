@@ -23,6 +23,8 @@ public class DeviceInfo implements Serializable {
     private String totalPower;
     private String fault;
     private String macLastTime;
+    private String lon;
+    private String lat;
 
     public String getUnitCode() {
         return unitCode;
@@ -182,5 +184,21 @@ public class DeviceInfo implements Serializable {
 
     public void setMacLastTime(String macLastTime) {
         this.macLastTime = macLastTime;
+    }
+
+    public String getLon() {
+        return lon;
+    }
+
+    public void setLon(String lon) {
+        this.lon = lon;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
     }
 }

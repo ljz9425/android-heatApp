@@ -62,11 +62,8 @@ public class FragmentOperatorLog extends BaseFragment {
         ScreenAdapterTools.getInstance().loadView(view);
         unbinder = ButterKnife.bind(this, view);
         devicePresenter = new DevicePresenter(this);
-        Intent intent = getActivity().getIntent();
-        DeviceInfo deviceInfo = (DeviceInfo) intent.getExtras().getSerializable("info");
-        if (null != deviceInfo) {
-            unitCode = deviceInfo.getUnitCode();
-        }
+        Bundle bundle = getActivity().getIntent().getExtras().getBundle("info");;
+        unitCode = bundle.getString("unitCode");
         //设置下拉刷新
         swipeRefreshOperator.setColorSchemeColors(getResources().getColor(R.color.colorLightBlue),
                 getResources().getColor(R.color.colorBule));

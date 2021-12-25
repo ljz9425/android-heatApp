@@ -99,11 +99,8 @@ public class FragmentDeviceConfig extends BaseFragment {
         unbinder = ButterKnife.bind(this, view);
 
         devicePresenter = new DevicePresenter(this);
-        Intent intent = getActivity().getIntent();
-        DeviceInfo deviceInfo = (DeviceInfo) intent.getExtras().getSerializable("info");
-        if (null != deviceInfo) {
-            unitCode = deviceInfo.getUnitCode();
-        }
+        Bundle bundle = getActivity().getIntent().getExtras().getBundle("info");;
+        unitCode = bundle.getString("unitCode");
         btn_save.setEnabled(false);
         return view;
     }
@@ -410,6 +407,9 @@ public class FragmentDeviceConfig extends BaseFragment {
 
     @Override
     public void init() {
+//        if (null != devicePresenter) {
+//            devicePresenter.queryDeviceConfig(unitCode);
+//        }
     }
 
     @Override
@@ -419,6 +419,7 @@ public class FragmentDeviceConfig extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        init();
     }
 
     @Override

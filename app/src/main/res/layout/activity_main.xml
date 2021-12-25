@@ -33,7 +33,7 @@
                 android:layout_gravity="top|right"/>
 
         </FrameLayout>
-        <androidx.viewpager.widget.ViewPager
+        <com.whisht.heatapp.view.control.MapViewPager
             android:id="@+id/main_viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

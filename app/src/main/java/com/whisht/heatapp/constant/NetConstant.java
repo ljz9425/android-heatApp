@@ -83,4 +83,5 @@ public class NetConstant {
     public static final int APP_MSG_SAVE_DEVICE_STATUS = 107;
     public static final int APP_MSG_QUERY_OPERATOR_LOG = 108;
     public static final int APP_MSG_QUERY_ALARM = 108;
+    public static final int APP_MSG_QUERY_DEVICE_LIST_FOR_MAP = 109;
 }

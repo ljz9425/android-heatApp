@@ -124,4 +124,18 @@ public class DevicePresenter extends BasePresenter {
         });
     }
 
+
+    public void queryDeviceListForMap(String param) {
+        deviceModel.queryDeviceListForMap(param).subscribe((deviceResult)-> {
+            if (deviceResult.getResultCode() == NetConstant.ERR_CODE_SUCCESS) {
+                mBaseView.success(NetConstant.APP_MSG_QUERY_DEVICE_LIST_FOR_MAP, deviceResult);
+            } else {
+                mBaseView.fail(NetConstant.APP_MSG_QUERY_DEVICE_LIST_FOR_MAP, deviceResult.getResultCode(), deviceResult.getResultMsg());
+            }
+        }, (e)->{
+            mBaseView.fail(NetConstant.APP_MSG_QUERY_DEVICE_LIST_FOR_MAP, NetConstant.CODE_SYS_EXCEPTION, NetConstant.MSG_TIP_SYSTEM_ERROR);
+        });
+    }
+
+
 }

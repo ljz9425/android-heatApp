@@ -114,4 +114,12 @@ public class DeviceModel extends ObjectModel {
         RequestBody requestBody = NetWorkUtils.createRequestBody(deviceReq);
         return heatObserve(getNetworkService().queryAlarm(requestBody)).map(alarmMap);
     }
+
+
+    public Observable<DeviceResp> queryDeviceListForMap(String param) {
+        DeviceReq deviceReq = new DeviceReq();
+        deviceReq.setUnitCode(param);
+        RequestBody requestBody = NetWorkUtils.createRequestBody(deviceReq);
+        return heatObserve(getNetworkService().queryDeviceListForMap(requestBody)).map(deviceMap);
+    }
 }

@@ -156,7 +156,8 @@ public class BasePresenter {
         loginInfo.setUserId(loginResp.getUserId());
         loginInfo.setUserName(loginResp.getUserName());
         loginInfo.setMapLevel(loginResp.getMapLevel());
-        loginInfo.setMapCenter(loginResp.getMapCenter());
+        loginInfo.setLon(loginResp.getLon());
+        loginInfo.setLat(loginResp.getLat());
         mspHelper.putValue(SharedPreferencesHelper.MSP_USERINFO,loginInfo);
         NetConstant.setSessionId(loginResp.getSessionId());
     }

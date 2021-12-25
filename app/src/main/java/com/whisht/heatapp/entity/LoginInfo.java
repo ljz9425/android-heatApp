@@ -22,7 +22,8 @@ public class LoginInfo implements Serializable {
     //单位名称
     private String unit;
     private String mapLevel;
-    private String mapCenter;
+    private String lon;
+    private String lat;
 
     public String getUnitLevel() {
         return unitLevel;
@@ -88,11 +89,19 @@ public class LoginInfo implements Serializable {
         this.mapLevel = mapLevel;
     }
 
-    public String getMapCenter() {
-        return mapCenter;
+    public String getLon() {
+        return lon;
     }
 
-    public void setMapCenter(String mapCenter) {
-        this.mapCenter = mapCenter;
+    public void setLon(String lon) {
+        this.lon = lon;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
     }
 }

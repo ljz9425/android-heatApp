@@ -47,6 +47,7 @@
                     android:textColor="@color/colorBlackTran"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/index_ll_count"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -89,6 +90,7 @@
                     android:textColor="@color/colorBlackTran"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/index_ll_open"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -110,6 +112,7 @@
                     android:textColor="@color/colorBlackTran"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/index_ll_close"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -131,6 +134,7 @@
                     android:textColor="@color/colorBlackTran"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/index_ll_offline"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

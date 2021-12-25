@@ -18,6 +18,7 @@ import com.whisht.heatapp.view.fragment.FragmentDetailStatus;
 import com.whisht.heatapp.view.fragment.FragmentDeviceConfig;
 import com.whisht.heatapp.view.fragment.FragmentHistory;
 import com.whisht.heatapp.view.fragment.FragmentOperatorLog;
+import com.whisht.heatapp.view.fragment.FragmentRoomStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,17 +39,18 @@ public class DetailActive extends BaseFragmentActivity implements HeatBaseView.T
         setContentView(R.layout.activity_detail);
         baseView.onAfterCreate();
         baseView.showTitleBackOperator(true);
-        Intent intent = getIntent();
-        DeviceInfo deviceInfo = (DeviceInfo)intent.getExtras().getSerializable("info");
-        baseView.setTitleName(deviceInfo.getUnitName());
+//        DeviceInfo deviceInfo = (DeviceInfo)intent.getExtras().getSerializable("info");
+        Bundle bundle = getIntent().getExtras().getBundle("info");
+        baseView.setTitleName(bundle.getString("unitName"));
         initView();
     }
 
     private void initView() {
-        String[] titles = {"实时状态", "控制配置", "操作日志", "报警数据"};
+        String[] titles = {"实时状态", "控制配置", "风盘状态", "操作日志", "报警数据"};
         TabFragmentAdapter adapter = new TabFragmentAdapter(this, getSupportFragmentManager(), titles);
         fragmentList.add(new FragmentDetailStatus());
         fragmentList.add(new FragmentDeviceConfig());
+        fragmentList.add(new FragmentRoomStatus());
         fragmentList.add(new FragmentOperatorLog());
         fragmentList.add(new FragmentAlarm());
 //        fragmentList.add(new FragmentHistory());

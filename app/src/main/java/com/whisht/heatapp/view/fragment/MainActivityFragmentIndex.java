@@ -30,6 +30,7 @@ import com.whisht.heatapp.view.base.BaseFragment;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class MainActivityFragmentIndex extends BaseFragment {
 
@@ -55,6 +56,7 @@ public class MainActivityFragmentIndex extends BaseFragment {
     @BindView(R.id.index_rv_device)
     RecyclerView rvDevice;
 
+    private String param = "";
     List<DeviceInfo> deviceInfoList;
     CommonPresenter commonPresenter;
     DevicePresenter devicePresenter;
@@ -102,9 +104,12 @@ public class MainActivityFragmentIndex extends BaseFragment {
         deviceItemAdapter = new DeviceItemAdapter(mFragmentView.getContext(), new DeviceItemAdapter.ViewDeviceClick() {
             @Override
             public void onClick(DeviceInfo deviceInfo) {
+                Bundle bundle = new Bundle();
+                bundle.putString("unitCode", deviceInfo.getUnitCode());
+                bundle.putString("unitName", deviceInfo.getUnitName());
                 //查看详情
                 Intent intent = new Intent(MainActivityFragmentIndex.this.getActivity(), DetailActive.class);
-                intent.putExtra("info", deviceInfo);
+                intent.putExtra("info", bundle);
                 startActivity(intent);
             }
         });
@@ -145,17 +150,30 @@ public class MainActivityFragmentIndex extends BaseFragment {
 
     private void queryNextPageData() {
         if (canLoad) {
-            devicePresenter.queryDeviceList(curPage, pageSize, "");
+            devicePresenter.queryDeviceList(curPage, pageSize, param);
         }
     }
 
-
-//    private void initView() {
-//        //设置列表排列方向
-//        LinearLayoutManager mLayoutManager = new LinearLayoutManager(activity);
-//        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//    }
-
+    @OnClick({
+            R.id.index_ll_count, R.id.index_ll_open, R.id.index_ll_close, R.id.index_ll_offline
+    })
+    public void OnClick(View view) {
+        switch (view.getId()) {
+            case R.id.index_ll_count:
+                param = "";
+                break;
+            case R.id.index_ll_open:
+                param = "启动";
+                break;
+            case R.id.index_ll_close:
+                param = "停机";
+                break;
+            case R.id.index_ll_offline:
+                param = "离线";
+                break;
+        }
+        initDeviceData();
+    }
 
     @Override
     public void hide() {

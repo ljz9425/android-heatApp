@@ -114,11 +114,8 @@ public class FragmentDetailStatus extends BaseFragment {
         ScreenAdapterTools.getInstance().loadView(view);
         unbinder = ButterKnife.bind(this, view);
         devicePresenter = new DevicePresenter(this);
-        Intent intent = getActivity().getIntent();
-        DeviceInfo deviceInfo = (DeviceInfo) intent.getExtras().getSerializable("info");
-        if (null != deviceInfo) {
-            unitCode = deviceInfo.getUnitCode();
-        }
+        Bundle bundle = getActivity().getIntent().getExtras().getBundle("info");;
+        unitCode = bundle.getString("unitCode");
         //设置下拉刷新
         swipeRefreshDevice.setColorSchemeColors(getResources().getColor(R.color.colorLightBlue),
                 getResources().getColor(R.color.colorBule));
@@ -135,8 +132,8 @@ public class FragmentDetailStatus extends BaseFragment {
                     showToastMsg("设备离线状态，不能控制");
                     return;
                 }
-                String status = di_back_temp.getValue().equals("启动") ? "停机" : "启动";
-                boolean bOpen = di_back_temp.getValue().equals("启动") ? false : true;
+                String status = di_run_status.getValue().equals("启动") ? "停机" : "启动";
+                boolean bOpen = di_run_status.getValue().equals("启动") ? false : true;
                 try {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.Theme_AppCompat_Light_Dialog_Alert)
                             .setTitle("提示")
