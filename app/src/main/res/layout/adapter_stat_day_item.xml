@@ -48,7 +48,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="耗电量："
+                    android:text="消耗电量："
                     android:textSize="@dimen/detail_item_font_size"
                     android:textColor="@color/color_3b3b3b"/>
                 <TextView
@@ -69,7 +69,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="均能耗："
+                    android:text="平均能耗："
                     android:textSize="@dimen/detail_item_font_size"
                     android:textColor="@color/color_3b3b3b"/>
                 <TextView
