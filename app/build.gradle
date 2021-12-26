@@ -20,7 +20,7 @@ android {
         variant ->
             variant.outputs.all {
                 // 此处指定生成的apk文件名
-                outputFileName = "heatApp.apk"
+                outputFileName = "heatapp.apk"
             }
     }
 
