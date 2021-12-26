@@ -13,7 +13,7 @@ public class NetConstant {
     }
 
     //虚拟机
-    public static final String SERVER_DIP1 = "192.168.1.132";//192.168.2.2";//""192.168.1.132";
+    public static final String SERVER_DIP1 = "39.98.49.31";//192.168.2.2";//""192.168.1.132";
     public static final String SERVER_DIP2 = "192.168.2.9";
     public static String SERVER_IP1 = "39.98.49.31";
     public static String SERVER_IP2 = "39.98.49.31";

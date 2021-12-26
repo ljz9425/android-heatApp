@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="256px"
+                android:layout_width="265px"
                 android:layout_height="265px"
                 android:layout_marginTop="160px"
                 android:layout_centerHorizontal="true"

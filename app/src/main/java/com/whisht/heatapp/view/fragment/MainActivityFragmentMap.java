@@ -52,6 +52,8 @@ import butterknife.ButterKnife;
 
 public class MainActivityFragmentMap extends BaseFragment {
 
+    @BindView(R.id.titleName)
+    TextView tv_title;
     private MapView mMapView = null;
 
     private DevicePresenter devicePresenter;
@@ -65,6 +67,7 @@ public class MainActivityFragmentMap extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
+        tv_title.setText(R.string.main_menu_index_title);
         mMapView = view.findViewById(R.id.bMapView);
         ScreenAdapterTools.getInstance().loadView(view);
         unbinder = ButterKnife.bind(this, view);

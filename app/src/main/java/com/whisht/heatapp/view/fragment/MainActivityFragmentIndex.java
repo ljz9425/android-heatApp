@@ -55,6 +55,8 @@ public class MainActivityFragmentIndex extends BaseFragment {
     SwipeRefreshLayout swipeRefreshDevice;
     @BindView(R.id.index_rv_device)
     RecyclerView rvDevice;
+    @BindView(R.id.titleName)
+    TextView tv_title;
 
     private String param = "";
     List<DeviceInfo> deviceInfoList;
@@ -75,6 +77,7 @@ public class MainActivityFragmentIndex extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
+        tv_title.setText(R.string.main_menu_index_title);
         register(activity);
 //        initView();
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);

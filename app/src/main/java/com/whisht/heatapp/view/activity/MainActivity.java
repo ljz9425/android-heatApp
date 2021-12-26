@@ -270,18 +270,18 @@ public class MainActivity extends BaseFragmentActivity {
     private long last = 0;
     @Override
     public void onBackPressed() {
-//        if(currentFragment != null){
-//            if(currentFragment.onBackPressed()){
-//                return;
-//            }
-//        }
-//        long cur = System.currentTimeMillis();
-//        if(cur - last > 700){
-//            last = System.currentTimeMillis();
-//            showToastMsg("再按一次退出");
-//        }else{
-//            super.onBackPressed();
-//        }
+        if(currentFragment != null){
+            if(currentFragment.onBackPressed()){
+                return;
+            }
+        }
+        long cur = System.currentTimeMillis();
+        if(cur - last > 700){
+            last = System.currentTimeMillis();
+            showToastMsg("再按一次退出");
+        }else{
+            super.onBackPressed();
+        }
     }
 
     /**

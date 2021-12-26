@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +31,8 @@ public class MainActivityFragmentStat extends BaseFragment {
     TabLayout tabLayoutStat;
     @BindView(R.id.stat_viewPager)
     ViewPager viewPagerStat;
+    @BindView(R.id.titleName)
+    TextView tv_title;
     List<Fragment> fragmentList = new ArrayList<>();
 
     @Override
@@ -43,6 +46,7 @@ public class MainActivityFragmentStat extends BaseFragment {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         ScreenAdapterTools.getInstance().loadView(view);
         unbinder = ButterKnife.bind(this, view);
+        tv_title.setText(R.string.main_menu_index_title);
         initView();
         return view;
     }

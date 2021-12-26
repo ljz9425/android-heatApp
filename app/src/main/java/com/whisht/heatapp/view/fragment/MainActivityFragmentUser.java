@@ -81,7 +81,7 @@ public class MainActivityFragmentUser extends BaseFragment {
         unbinder = ButterKnife.bind(this, view);
         loginPresenter = new LoginPresenter(this);
         userPresenter = new UserPresenter(this);
-        tv_title.setText("用户");
+        tv_title.setText(R.string.main_menu_index_title);
         iv_head_img.setImageResource(R.mipmap.ico_account);
         LoginInfo loginInfo = loginPresenter.getLoginInfo();
         tv_name.setText(loginInfo.getLoginName());
@@ -139,7 +139,7 @@ public class MainActivityFragmentUser extends BaseFragment {
                     if (CommonUtils.isApkInDebug()) {
                         update = UpdateManager.newInstance(this.getActivity(),
                                 NetConstant.APP_CHECK_URL_DEBUG(), NetConstant.APP_DOWNLOAD_URL_DEBUG(),
-                                "heatapp_debug.apk", updateCallBack);
+                                "heatapp-debug.apk", updateCallBack);
                     } else {
                         update = UpdateManager.newInstance(this.getActivity(),
                                 NetConstant.APP_CHECK_URL(), NetConstant.APP_DOWNLOAD_URL(),

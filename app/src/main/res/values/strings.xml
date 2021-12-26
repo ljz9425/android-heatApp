@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">DEMO</string>
-    <string name="main_menu_zhuye_title">DEMO</string>
+    <string name="app_name">节能控制</string>
+    <string name="main_menu_zhuye_title">节能集中控制平台</string>
 
     <string name="file_account">heat_account_file</string>
     <!-- 登录 -->
@@ -20,7 +20,7 @@
     <string name="minute">分</string>
 
     <!-- 主页 -->
-    <string name="main_menu_index_title">石黄高速运营管理通平台</string>
+    <string name="main_menu_index_title">节能集中控制平台</string>
     <string name="main_menu_index">首页</string>
     <string name="main_menu_map">地图</string>
     <string name="main_menu_stat">能耗</string>
