@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 输入框获得焦点时的样式 -->
+    <item  android:state_focused="true"    android:drawable= "@drawable/edittext_box_focused" />
+    <!-- 输入框未获得焦点时的样式 -->
+    <item  android:state_focused="false"   android:drawable="@drawable/edittext_box_normal" />
+
+</selector>

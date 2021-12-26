@@ -43,7 +43,10 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -606,5 +609,40 @@ public class CommonUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static String YMD = "yyyy-MM-dd";
+    public static String YM = "yyyy-MM";
+    public static String Y = "yyyy";
+
+    public static String currentDateStr() {
+        SimpleDateFormat sdf = new SimpleDateFormat(YMD);
+        return sdf.format(new Date());
+    }
+
+    public static String firstDateStrForMonth() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        SimpleDateFormat sdf = new SimpleDateFormat(YMD);
+        return sdf.format(calendar.getTime());
+    }
+
+    public static String currentMonthStr() {
+        SimpleDateFormat sdf = new SimpleDateFormat(YM);
+        return sdf.format(new Date());
+    }
+
+    public static String firstMonthStrForYear() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.set(Calendar.MONDAY, 0);
+        SimpleDateFormat sdf = new SimpleDateFormat(YM);
+        return sdf.format(calendar.getTime());
+    }
+
+    public static String currentYearStr() {
+        SimpleDateFormat sdf = new SimpleDateFormat(Y);
+        return sdf.format(new Date());
     }
 }

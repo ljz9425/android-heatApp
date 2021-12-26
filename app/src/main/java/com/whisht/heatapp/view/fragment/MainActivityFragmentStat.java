@@ -8,17 +8,29 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.tabs.TabLayout;
 import com.whisht.heatapp.R;
 import com.whisht.heatapp.autoupdate.IUpdate;
 import com.whisht.heatapp.entity.base.BaseResp;
+import com.whisht.heatapp.view.adapter.TabFragmentAdapter;
 import com.whisht.heatapp.view.base.BaseFragment;
 import com.yatoooon.screenadaptation.ScreenAdapterTools;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivityFragmentStat extends BaseFragment {
-
+    @BindView(R.id.stat_tabLayout)
+    TabLayout tabLayoutStat;
+    @BindView(R.id.stat_viewPager)
+    ViewPager viewPagerStat;
+    List<Fragment> fragmentList = new ArrayList<>();
 
     @Override
     protected int getLayoutResource() {
@@ -31,10 +43,28 @@ public class MainActivityFragmentStat extends BaseFragment {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         ScreenAdapterTools.getInstance().loadView(view);
         unbinder = ButterKnife.bind(this, view);
+        initView();
         return view;
     }
 
-
+    private void initView() {
+        String[] titles = {"能耗日报", "能耗月报", "能耗年报", "能耗日分析", "能耗月分析"};
+        TabFragmentAdapter adapter = new TabFragmentAdapter(getContext(), getActivity().getSupportFragmentManager(), titles);
+        fragmentList.add(new FragmentStatList());
+        fragmentList.add(new FragmentStatMonth());
+        fragmentList.add(new FragmentStatYear());
+        fragmentList.add(new FragmentHistory());
+        fragmentList.add(new FragmentHistory());
+        adapter.setFragments(fragmentList);
+        this.viewPagerStat.setAdapter(adapter);
+        this.tabLayoutStat.setupWithViewPager(this.viewPagerStat);
+        for (int i = 0; i < tabLayoutStat.getTabCount(); i++) {
+            TabLayout.Tab tab = tabLayoutStat.getTabAt(i);
+            if (null != tab) {
+                tab.setCustomView(adapter.getTabView(i));
+            }
+        }
+    }
     @Override
     public void init() {
     }

@@ -100,7 +100,7 @@ public class FragmentOperatorLog extends BaseFragment {
     private void intData() {
         curPage = 1;
         canLoad = true;
-        if (operatorInfoList != null && operatorInfoList.size() > 0) {
+        if (operatorInfoList != null && operatorInfoList.size() > 0 && null != operatorItemAdapter) {
             operatorItemAdapter.notifyItemRangeRemoved(0, operatorItemAdapter.getItemCount());
             operatorInfoList.clear();
         }

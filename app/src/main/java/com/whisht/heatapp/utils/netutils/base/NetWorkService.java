@@ -83,4 +83,28 @@ public interface NetWorkService {
     @Headers({"Content-Type: application/json"})
     Observable<ResponseBody> queryDeviceListForMap(@Body RequestBody requestBody);
 
+    @POST("statDay")
+    @Headers({"Content-Type: application/json"})
+    Observable<ResponseBody> statDay(@Body RequestBody requestBody);
+
+    @POST("statDayList")
+    @Headers({"Content-Type: application/json"})
+    Observable<ResponseBody> statDayList(@Body RequestBody requestBody);
+
+    @POST("statMonth")
+    @Headers({"Content-Type: application/json"})
+    Observable<ResponseBody> statMonth(@Body RequestBody requestBody);
+
+    @POST("statMonthList")
+    @Headers({"Content-Type: application/json"})
+    Observable<ResponseBody> statMonthList(@Body RequestBody requestBody);
+
+    @POST("statYear")
+    @Headers({"Content-Type: application/json"})
+    Observable<ResponseBody> statYear(@Body RequestBody requestBody);
+
+    @POST("statYearList")
+    @Headers({"Content-Type: application/json"})
+    Observable<ResponseBody> statYearList(@Body RequestBody requestBody);
+
 }

@@ -99,7 +99,7 @@ public class FragmentAlarm extends BaseFragment {
     private void intData() {
         curPage = 1;
         canLoad = true;
-        if (alarmInfoList != null && alarmInfoList.size() > 0) {
+        if (alarmInfoList != null && alarmInfoList.size() > 0 && null != alarmItemAdapter) {
             alarmItemAdapter.notifyItemRangeRemoved(0, alarmItemAdapter.getItemCount());
             alarmInfoList.clear();
         }

@@ -121,17 +121,17 @@ public class FragmentDeviceConfig extends BaseFragment {
                 break;
             case  R.id.dc_back_temp:
                 if (sw_ctrl_type.isChecked() && sw_ctrl_1.isChecked()) {
-                    editTemp(tv_room_temp, "定时控制1回水温度");
+                    editTemp(tv_back_temp, "定时控制1回水温度");
                 }
                 break;
             case  R.id.dc_back_temp2:
                 if (sw_ctrl_type.isChecked() && sw_ctrl_2.isChecked()) {
-                    editTemp(tv_room_temp, "定时控制2回水温度");
+                    editTemp(tv_back_temp2, "定时控制2回水温度");
                 }
                 break;
             case  R.id.dc_back_temp3:
                 if (sw_ctrl_type.isChecked() && sw_ctrl_3.isChecked()) {
-                    editTemp(tv_room_temp, "定时控制3回水温度");
+                    editTemp(tv_back_temp3, "定时控制3回水温度");
                 }
                 break;
             case R.id.dc_start_date:
@@ -174,7 +174,18 @@ public class FragmentDeviceConfig extends BaseFragment {
                     editTime(tv_stop_time3, "定时控制3结束时间");
                 }
                 break;
+            case R.id.dc_ctrl_1:
+                if(!sw_ctrl_1.isChecked() && sw_ctrl_2.isChecked()) {
+                    showToastMsg("请先关闭定时控制2");
+                    sw_ctrl_1.setChecked(true);
+                }
+                break;
             case R.id.dc_ctrl_2:
+                if(!sw_ctrl_2.isChecked() && sw_ctrl_3.isChecked()) {
+                    showToastMsg("请先关闭定时控制3");
+                    sw_ctrl_2.setChecked(true);
+                    return;
+                }
                 if (!sw_ctrl_1.isChecked() && sw_ctrl_2.isChecked()) {
                     showToastMsg("请先设置定时控制1");
                     sw_ctrl_2.setChecked(false);
@@ -332,7 +343,7 @@ public class FragmentDeviceConfig extends BaseFragment {
         inputServer.setFocusable(true);
         inputServer.setText(textView.getText());
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("请输入设定温度").setView(inputServer).setNegativeButton(
+        builder.setTitle(msg).setView(inputServer).setNegativeButton(
                 "取消", null);
         builder.setPositiveButton("确定",
                 (dialog, which) -> {

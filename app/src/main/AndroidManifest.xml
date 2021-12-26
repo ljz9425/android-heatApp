@@ -36,6 +36,7 @@
         <activity android:name=".view.activity.MainActivity" />
         <activity android:name=".view.activity.personal.UpdatePassWordActivity" />
         <activity android:name=".view.activity.DetailActive" />
+        <activity android:name=".view.activity.StatActivity" />
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

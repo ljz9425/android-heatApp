@@ -1,6 +1,5 @@
 package com.whisht.heatapp.view.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -9,14 +8,12 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.whisht.heatapp.R;
-import com.whisht.heatapp.entity.DeviceInfo;
 import com.whisht.heatapp.view.adapter.TabFragmentAdapter;
 import com.whisht.heatapp.view.base.BaseFragmentActivity;
 import com.whisht.heatapp.view.base.HeatBaseView;
 import com.whisht.heatapp.view.fragment.FragmentAlarm;
 import com.whisht.heatapp.view.fragment.FragmentDetailStatus;
 import com.whisht.heatapp.view.fragment.FragmentDeviceConfig;
-import com.whisht.heatapp.view.fragment.FragmentHistory;
 import com.whisht.heatapp.view.fragment.FragmentOperatorLog;
 import com.whisht.heatapp.view.fragment.FragmentRoomStatus;
 
@@ -76,7 +73,7 @@ public class DetailActive extends BaseFragmentActivity implements HeatBaseView.T
 
     @Override
     public void onBackClick() {
-
+        finish();
     }
 
     @Override
