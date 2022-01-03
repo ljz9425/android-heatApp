@@ -1,6 +1,5 @@
 package com.whisht.heatapp.view.fragment;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.whisht.heatapp.R;
-import com.whisht.heatapp.autoupdate.IUpdate;
 import com.whisht.heatapp.constant.NetConstant;
 import com.whisht.heatapp.entity.StatDayInfo;
 import com.whisht.heatapp.entity.base.BaseResp;
@@ -105,6 +103,8 @@ public class FragmentStatYear extends BaseFragment {
                 lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
             }
         });
+        isPrepared = true;
+        initData();
         return view;
     }
 
@@ -157,15 +157,9 @@ public class FragmentStatYear extends BaseFragment {
     }
 
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-            initData();
-        }
-    }
-
-    @Override
-    public void init() {
+    public void lazyLoad() {
+//        if(!isVisible||!isPrepared) return;
+//        initData();
     }
 
     @Override
@@ -188,7 +182,9 @@ public class FragmentStatYear extends BaseFragment {
                 canLoad = curPage++ < resp.getMaxPageSize();
                 if (null == infoList || infoList.size() <= 0) {
                     swipeRefreshStat.setRefreshing(false);
-                    showToastMsg("暂无数据");
+                    if (isVisible) {
+                        showToastMsg("暂无数据");
+                    }
                     return;
                 }
                 int itemPosition;
@@ -239,10 +235,5 @@ public class FragmentStatYear extends BaseFragment {
     public void OnExit(boolean isMustNeed, int sign) {
 
     }
-
-    private AlertDialog dialog;
-    private IUpdate update = null;
-    int versionCode = 0;
-
 
 }

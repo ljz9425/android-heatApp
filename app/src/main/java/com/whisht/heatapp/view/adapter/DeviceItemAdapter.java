@@ -90,12 +90,7 @@ public class DeviceItemAdapter extends RecyclerView.Adapter {
             tv_unitName.setText(deviceInfo.getUnitName());
             tv_statusDesc.setText(deviceInfo.getStatusDesc());
             tv_macLastTime.setText(deviceInfo.getMacLastTime());
-            layout_item.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    viewDeviceClick.onClick(deviceInfo);
-                }
-            });
+            layout_item.setOnClickListener(v -> viewDeviceClick.onClick(deviceInfo));
         }
     }
 

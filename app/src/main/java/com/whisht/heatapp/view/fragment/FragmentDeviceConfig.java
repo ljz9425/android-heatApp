@@ -49,8 +49,10 @@ public class FragmentDeviceConfig extends BaseFragment {
     Switch sw_ctrl_saturday;
     @BindView(R.id.dc_ctrl_sunday)
     Switch sw_ctrl_sunday;
-    @BindView(R.id.dc_room_temp)
-    TextView tv_room_temp;
+    @BindView(R.id.dc_room_temp_open)
+    TextView tv_room_temp_open;
+    @BindView(R.id.dc_room_temp_close)
+    TextView tv_room_temp_close;
     @BindView(R.id.dc_start_date)
     TextView tv_start_date;
     @BindView(R.id.dc_stop_date)
@@ -102,21 +104,28 @@ public class FragmentDeviceConfig extends BaseFragment {
         Bundle bundle = getActivity().getIntent().getExtras().getBundle("info");;
         unitCode = bundle.getString("unitCode");
         btn_save.setEnabled(false);
+        isPrepared = true;
+        devicePresenter.queryDeviceConfig(unitCode);
         return view;
     }
 
 
     @OnClick({
-            R.id.dc_room_temp, R.id.dc_start_date, R.id.dc_stop_date, R.id.dc_save,
+            R.id.dc_room_temp_open, R.id.dc_room_temp_close, R.id.dc_start_date, R.id.dc_stop_date, R.id.dc_save,
             R.id.dc_ctrl_1, R.id.dc_back_temp, R.id.dc_start_time, R.id.dc_stop_time,
             R.id.dc_ctrl_2, R.id.dc_back_temp2, R.id.dc_start_time2, R.id.dc_stop_time2,
             R.id.dc_ctrl_3, R.id.dc_back_temp3, R.id.dc_start_time3, R.id.dc_stop_time3,
     })
     public void OnClick(View view) {
         switch (view.getId()) {
-            case R.id.dc_room_temp:
+            case R.id.dc_room_temp_open:
                 if (sw_ctrl_type.isChecked()) {
-                    editTemp(tv_room_temp, "室温控制");
+                    editTemp(tv_room_temp_open, "室温控制开机温度");
+                }
+                break;
+            case R.id.dc_room_temp_close:
+                if (sw_ctrl_type.isChecked()) {
+                    editTemp(tv_room_temp_close, "室温控制关机温度");
                 }
                 break;
             case  R.id.dc_back_temp:
@@ -206,8 +215,19 @@ public class FragmentDeviceConfig extends BaseFragment {
         }
     }
 
+    private boolean validTimeEnd(String times, String msg) {
+        if ("23:59".equals(times)) return true;
+        String t = times.substring(3);
+        if (!(t.equals("00") || t.equals("30"))) {
+            showToastMsg(msg + "时间（" + times + "）应为整点、半点、23:59（xx:00或xx:30)");
+            return false;
+        }
+        return true;
+    }
+
     public boolean validTime(String curStart, String curStop, String upStart, String upStop, String msg) {
         try {
+            if (curStart.substring(3).equals("30"))
             if (curStart.equals("00:00") && curStop.equals("00:00")) {
                 showToastMsg("请设置" + msg + "启动时间");
                 return false;
@@ -258,10 +278,22 @@ public class FragmentDeviceConfig extends BaseFragment {
     private void saveConfig() {
         //数据验证 开始
         boolean bValid = false;
+        if (Integer.parseInt(tv_room_temp_open.getText().toString())
+                >= Integer.parseInt(tv_room_temp_close.getText().toString())) {
+            showToastMsg("室温控制开机温度不能小于关机温度");
+            return;
+
+        }
         if (sw_ctrl_1.isChecked()) {
             if (tv_start_time.getText().toString().equals("00:00")
                 && tv_stop_time.getText().toString().equals("00:00")) {
                 showToastMsg("请设置定时控制1启动时间");
+                return;
+            }
+            if (!validTimeEnd(tv_start_time.getText().toString(), "定时控制1启动时间")) return;
+            if (!validTimeEnd(tv_stop_time.getText().toString(), "定时控制1停止时间")) return;
+            if (tv_stop_time.getText().toString().equals("00:00")) {
+                showToastMsg("定时控制1停止时间不能为00:00，应为23:59");
                 return;
             }
             if (tv_back_temp.getText().toString().equals("0")) {
@@ -272,6 +304,12 @@ public class FragmentDeviceConfig extends BaseFragment {
         if (sw_ctrl_2.isChecked()) {
             if (tv_back_temp2.getText().toString().equals("0")) {
                 showToastMsg("请设置定时控制2设定温度");
+                return;
+            }
+            if (!validTimeEnd(tv_start_time2.getText().toString(), "定时控制2启动时间")) return;
+            if (!validTimeEnd(tv_stop_time2.getText().toString(), "定时控制2停止时间")) return;
+            if (tv_stop_time2.getText().toString().equals("00:00")) {
+                showToastMsg("定时控制2停止时间不能为00:00，应为23:59");
                 return;
             }
             bValid = validTime(tv_start_time.getText().toString(),
@@ -285,6 +323,12 @@ public class FragmentDeviceConfig extends BaseFragment {
         if (sw_ctrl_3.isChecked()) {
             if (tv_back_temp3.getText().toString().equals("0")) {
                 showToastMsg("请设置定时控制3设定温度");
+                return;
+            }
+            if (!validTimeEnd(tv_start_time3.getText().toString(), "定时控制3启动时间")) return;
+            if (!validTimeEnd(tv_stop_time3.getText().toString(), "定时控制3停止时间")) return;
+            if (tv_stop_time3.getText().toString().equals("00:00")) {
+                showToastMsg("定时控制3停止时间不能为00:00，应为23:59");
                 return;
             }
             bValid = validTime(
@@ -306,7 +350,8 @@ public class FragmentDeviceConfig extends BaseFragment {
         req.setSundayCtrl((byte) (sw_ctrl_sunday.isChecked() ? 1 : 0));
         req.setStartDate(tv_start_date.getText().toString());
         req.setStopDate(tv_stop_date.getText().toString());
-        req.setRoomTemp(Byte.parseByte(tv_room_temp.getText().toString()));
+        req.setRoomTempOpen(Byte.parseByte(tv_room_temp_open.getText().toString()));
+        req.setRoomTempClose(Byte.parseByte(tv_room_temp_close.getText().toString()));
         if (sw_ctrl_1.isChecked()) {
             req.setBackTemp(Byte.parseByte(tv_back_temp.getText().toString()));
             req.setOpenCloseTimingStart(tv_start_time.getText().toString());
@@ -350,8 +395,8 @@ public class FragmentDeviceConfig extends BaseFragment {
                     try {
                         String inputName = inputServer.getText().toString();
                         int temp = Integer.parseInt(inputName);
-                        if (temp < 10 || temp > 100) {
-                            showToastMsg("“" + msg + "”区间为10到100之间");
+                        if (temp < 0 || temp > 100) {
+                            showToastMsg("“" + msg + "”区间为0到100之间");
                         } else {
                             if (!inputName.equals(textView.getText())) {
                                 textView.setText(temp+"");
@@ -416,29 +461,17 @@ public class FragmentDeviceConfig extends BaseFragment {
         }
     }
 
-    @Override
-    public void init() {
-//        if (null != devicePresenter) {
-//            devicePresenter.queryDeviceConfig(unitCode);
-//        }
-    }
 
     @Override
     public void hide() {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        init();
-    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-            devicePresenter.queryDeviceConfig(unitCode);
-        }
+    public void lazyLoad() {
+//        if (!isVisible || !isPrepared) {
+//            return;
+//        }
+//        devicePresenter.queryDeviceConfig(unitCode);
     }
 
     @Override
@@ -456,7 +489,8 @@ public class FragmentDeviceConfig extends BaseFragment {
                 if (resp.getSundayCtrl() == 1) {
                     sw_ctrl_sunday.setChecked(true);
                 }
-                tv_room_temp.setText(resp.getRoomTemp()+"");
+                tv_room_temp_open.setText(resp.getRoomTempOpen()+"");
+                tv_room_temp_close.setText(resp.getRoomTempClose()+"");
                 tv_start_date.setText(resp.getStartDate());
                 tv_stop_date.setText(resp.getStopDate());
                 if (resp.getBackTemp() > 0) {

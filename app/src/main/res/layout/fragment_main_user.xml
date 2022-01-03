@@ -251,7 +251,7 @@
                     android:layout_gravity="center"
                     android:gravity="center_vertical"
                     android:text=""
-                    android:textSize="38px"
+                    android:textSize="40px"
                     android:textColor="@color/gray"/>
 
                 <TextView

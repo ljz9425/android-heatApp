@@ -1,7 +1,5 @@
 package com.whisht.heatapp.view.fragment;
 
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,17 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.whisht.heatapp.R;
-import com.whisht.heatapp.autoupdate.IUpdate;
 import com.whisht.heatapp.constant.NetConstant;
-import com.whisht.heatapp.entity.DeviceInfo;
 import com.whisht.heatapp.entity.OperatorInfo;
 import com.whisht.heatapp.entity.base.BaseResp;
-import com.whisht.heatapp.entity.http.resp.DeviceResp;
 import com.whisht.heatapp.entity.http.resp.OperatorResp;
-import com.whisht.heatapp.presenter.CommonPresenter;
 import com.whisht.heatapp.presenter.DevicePresenter;
-import com.whisht.heatapp.view.activity.DetailActive;
-import com.whisht.heatapp.view.adapter.DeviceItemAdapter;
 import com.whisht.heatapp.view.adapter.OperatorItemAdapter;
 import com.whisht.heatapp.view.base.BaseFragment;
 import com.yatoooon.screenadaptation.ScreenAdapterTools;
@@ -67,7 +59,7 @@ public class FragmentOperatorLog extends BaseFragment {
         //设置下拉刷新
         swipeRefreshOperator.setColorSchemeColors(getResources().getColor(R.color.colorLightBlue),
                 getResources().getColor(R.color.colorBule));
-        swipeRefreshOperator.setOnRefreshListener(() -> intData());
+        swipeRefreshOperator.setOnRefreshListener(() -> initData());
         //设置列表排列方向
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(mFragmentView.getContext());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -94,10 +86,20 @@ public class FragmentOperatorLog extends BaseFragment {
                 lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
             }
         });
+        isPrepared = true;
+        initData();
         return view;
     }
 
-    private void intData() {
+    @Override
+    public void lazyLoad() {
+//        if (!isVisible || !isPrepared) {
+//            return;
+//        }
+//        initData();
+    }
+
+    private void initData() {
         curPage = 1;
         canLoad = true;
         if (operatorInfoList != null && operatorInfoList.size() > 0 && null != operatorItemAdapter) {
@@ -111,18 +113,6 @@ public class FragmentOperatorLog extends BaseFragment {
         if (canLoad) {
             devicePresenter.queryOperator(curPage, pageSize, unitCode);
         }
-    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-            intData();
-        }
-    }
-
-    @Override
-    public void init() {
     }
 
     @Override
@@ -144,7 +134,9 @@ public class FragmentOperatorLog extends BaseFragment {
                 canLoad = curPage++ < resp.getMaxPageSize();
                 if (null == infoList || infoList.size() <= 0) {
                     swipeRefreshOperator.setRefreshing(false);
-                    showToastMsg("暂无数据");
+                    if (isVisible) {
+                        showToastMsg("暂无数据");
+                    }
                     return;
                 }
                 int itemPosition;
@@ -196,10 +188,5 @@ public class FragmentOperatorLog extends BaseFragment {
     public void OnExit(boolean isMustNeed, int sign) {
 
     }
-
-    private AlertDialog dialog;
-    private IUpdate update = null;
-    int versionCode = 0;
-
 
 }

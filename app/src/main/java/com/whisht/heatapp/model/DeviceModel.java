@@ -9,6 +9,7 @@ import com.whisht.heatapp.entity.http.resp.DeviceConfigResp;
 import com.whisht.heatapp.entity.http.resp.DeviceResp;
 import com.whisht.heatapp.entity.http.resp.DeviceStatusResp;
 import com.whisht.heatapp.entity.http.resp.OperatorResp;
+import com.whisht.heatapp.entity.http.resp.RoomResp;
 import com.whisht.heatapp.model.base.ObjectModel;
 import com.whisht.heatapp.utils.netutils.NetWorkUtils;
 
@@ -51,6 +52,7 @@ public class DeviceModel extends ObjectModel {
 
 
     public Func1<byte[], AlarmResp> alarmMap = body -> (AlarmResp) responseDecode(body, AlarmResp.class);
+    public Func1<byte[], RoomResp> roomMap = body -> (RoomResp) responseDecode(body, RoomResp.class);
 
     public Observable<DeviceResp> queryDeviceList(int pageIndex, int pageSize, String param) {
         DeviceReq deviceReq = new DeviceReq();
@@ -122,4 +124,40 @@ public class DeviceModel extends ObjectModel {
         RequestBody requestBody = NetWorkUtils.createRequestBody(deviceReq);
         return heatObserve(getNetworkService().queryDeviceListForMap(requestBody)).map(deviceMap);
     }
+
+
+    public Observable<RoomResp> queryRoomList(int pageIndex, int pageSize, String unitCode) {
+        DeviceReq deviceReq = new DeviceReq();
+        deviceReq.setPageIndex(pageIndex);
+        deviceReq.setPageSize(pageSize);
+        deviceReq.setUnitCode(unitCode);
+        RequestBody requestBody = NetWorkUtils.createRequestBody(deviceReq);
+        return heatObserve(getNetworkService().queryRoomList(requestBody)).map(roomMap);
+    }
+
+    public Observable<BaseResp> openRoom(String unitCode, String roomId, String roomName) {
+        DeviceStatusReq statusReq = new DeviceStatusReq(unitCode);
+        statusReq.setRoomId(roomId);
+        statusReq.setRoomName(roomName);
+        RequestBody requestBody = NetWorkUtils.createRequestBody(statusReq);
+        return heatObserve(getNetworkService().openRoom(requestBody)).map(baseMap);
+    }
+
+    public Observable<BaseResp> closeRoom(String unitCode, String roomId, String roomName) {
+        DeviceStatusReq statusReq = new DeviceStatusReq(unitCode);
+        statusReq.setRoomId(roomId);
+        statusReq.setRoomName(roomName);
+        RequestBody requestBody = NetWorkUtils.createRequestBody(statusReq);
+        return heatObserve(getNetworkService().closeRoom(requestBody)).map(baseMap);
+    }
+
+    public Observable<BaseResp> setRoomTemp(String unitCode, String roomId, String roomName, String temp) {
+        DeviceStatusReq statusReq = new DeviceStatusReq(unitCode);
+        statusReq.setRoomId(roomId);
+        statusReq.setRoomName(roomName);
+        statusReq.setSetTemp(temp);
+        RequestBody requestBody = NetWorkUtils.createRequestBody(statusReq);
+        return heatObserve(getNetworkService().setRoomTemp(requestBody)).map(baseMap);
+    }
+
 }

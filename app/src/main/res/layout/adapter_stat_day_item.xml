@@ -19,7 +19,7 @@
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60px"
+                android:layout_height="70px"
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
                 <TextView
@@ -28,6 +28,7 @@
                     android:layout_height="wrap_content"
                     android:text="小平王中学宿舍楼"
                     android:textSize="@dimen/detail_item_font_size"
+                    android:textStyle="bold"
                     android:textColor="@color/color_3b3b3b"/>
                 <TextView
                     android:id="@+id/sdi_times"
@@ -42,7 +43,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60px"
+                android:layout_height="70px"
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
                 <TextView
@@ -63,7 +64,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60px"
+                android:layout_height="70px"
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
                 <TextView

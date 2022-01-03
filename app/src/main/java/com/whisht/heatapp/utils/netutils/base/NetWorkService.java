@@ -48,7 +48,6 @@ public interface NetWorkService {
     @Headers({"Content-Type: application/json"})
     Observable<ResponseBody> queryDeviceStatus(@Body RequestBody requestBody);
 
-
     @POST("openHost")
     @Headers({"Content-Type: application/json"})
     Observable<ResponseBody> openHost(@Body RequestBody requestBody);
@@ -62,6 +61,17 @@ public interface NetWorkService {
     @Headers({"Content-Type: application/json"})
     Observable<ResponseBody> setTemp(@Body RequestBody requestBody);
 
+    @POST("openRoom")
+    @Headers({"Content-Type: application/json"})
+    Observable<ResponseBody> openRoom(@Body RequestBody requestBody);
+
+    @POST("closeRoom")
+    @Headers({"Content-Type: application/json"})
+    Observable<ResponseBody> closeRoom(@Body RequestBody requestBody);
+
+    @POST("setRoomTemp")
+    @Headers({"Content-Type: application/json"})
+    Observable<ResponseBody> setRoomTemp(@Body RequestBody requestBody);
 
     @POST("queryDeviceConfig")
     @Headers({"Content-Type: application/json"})
@@ -78,6 +88,10 @@ public interface NetWorkService {
     @POST("queryAlarm")
     @Headers({"Content-Type: application/json"})
     Observable<ResponseBody> queryAlarm(@Body RequestBody requestBody);
+
+    @POST("queryRoomList")
+    @Headers({"Content-Type: application/json"})
+    Observable<ResponseBody> queryRoomList(@Body RequestBody requestBody);
 
     @POST("queryDeviceListForMap")
     @Headers({"Content-Type: application/json"})

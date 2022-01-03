@@ -91,6 +91,8 @@ public class MainActivityFragmentUser extends BaseFragment {
             verStr += " debug";
         }
         versionEdit.setText(verStr);
+        isPrepared = true;
+//        lazyLoad();
         return view;
     }
 
@@ -180,10 +182,19 @@ public class MainActivityFragmentUser extends BaseFragment {
     }
 
     @Override
-    public void init() {
-        isHaveNewTask = new IsHaveNewTask();
-        isHaveNewTask.execute();
+    public void lazyLoad() {
+//        if (!isVisible || !isPrepared) {
+//            return;
+//        }
+//        isHaveNewTask = new IsHaveNewTask();
+//        isHaveNewTask.execute();
     }
+
+//    @Override
+//    public void init() {
+//        isHaveNewTask = new IsHaveNewTask();
+//        isHaveNewTask.execute();
+//    }
 
     @Override
     public void hide() {

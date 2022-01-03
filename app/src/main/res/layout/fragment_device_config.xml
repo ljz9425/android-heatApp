@@ -26,7 +26,7 @@
                     android:background="@color/colorLightGray" />
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150px"
+                    android:layout_height="130px"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
@@ -56,7 +56,7 @@
                     android:background="@color/colorLightGray" />
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150px"
+                    android:layout_height="130px"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
@@ -86,7 +86,7 @@
                     android:background="@color/colorLightGray" />
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150px"
+                    android:layout_height="130px"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
@@ -111,38 +111,6 @@
                 </LinearLayout>
 
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/split_item_height"
-                    android:background="@color/colorLightGray" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="150px"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="室温控制"
-                        android:textColor="@color/color_3b3b3b"
-                        android:textSize="@dimen/device_config_font_size" />
-                    <TextView
-                        android:id="@+id/dc_room_temp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center|right"
-                        android:text="20"
-                        android:textColor="@color/color_3b3b3b"
-                        android:textSize="@dimen/device_config_font_size" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text=" ℃ "
-                        android:textColor="@color/color_3b3b3b"
-                        android:textSize="@dimen/device_config_font_size" />
-                </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -150,7 +118,7 @@
                     android:background="@color/colorLightGray" />
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150px"
+                    android:layout_height="130px"
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
@@ -193,6 +161,91 @@
                         android:textSize="@dimen/device_config_font_size" />
 
                 </LinearLayout>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/split_item_height"
+                android:background="@color/colorLightGray" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="130px"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="室温控制"
+                    android:textColor="@color/color_3b3b3b"
+                    android:textSize="@dimen/device_config_font_size" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/split_item_height"
+                    android:background="@color/colorLightGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120px"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="              开机温度"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:id="@+id/dc_room_temp_open"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|right"
+                        android:text="15"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text=" ℃ "
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/split_item_height"
+                    android:background="@color/colorLightGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120px"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="              关机温度"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:id="@+id/dc_room_temp_close"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|right"
+                        android:text="25"
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text=" ℃ "
+                        android:textColor="@color/color_3b3b3b"
+                        android:textSize="@dimen/device_config_font_size" />
+                </LinearLayout>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -207,7 +260,7 @@
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150px"
+                    android:layout_height="130px"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="0dp"
@@ -306,6 +359,7 @@
                         android:textSize="@dimen/device_config_font_size" />
                 </LinearLayout>
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/split_group_height"
@@ -319,7 +373,7 @@
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150px"
+                    android:layout_height="130px"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="0dp"
@@ -431,7 +485,7 @@
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150px"
+                    android:layout_height="130px"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="0dp"

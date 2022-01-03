@@ -21,7 +21,7 @@
             android:layout_gravity="center_horizontal"
             app:tabMode="scrollable"
             app:tabMaxWidth="0px"
-            app:tabGravity="fill"
+            app:tabGravity="center"
             app:tabSelectedTextColor="@color/colorPrimary"
             app:tabTextColor="@color/font_dark_gray"
             app:tabIndicatorColor="@color/sd_color_blue"  />

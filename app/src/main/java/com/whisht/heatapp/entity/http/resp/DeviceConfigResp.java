@@ -18,7 +18,8 @@ public class DeviceConfigResp extends BaseResp {
     private byte backTemp3 = 0;
     private String openCloseTimingStart3;
     private String openCloseTimingStop3;
-    private byte roomTemp = 0;
+    private byte roomTempOpen = 0;
+    private byte roomTempClose = 0;
     private String startDate;
     private String stopDate;
     private String updateTime;
@@ -148,14 +149,21 @@ public class DeviceConfigResp extends BaseResp {
         this.openCloseTimingStop3 = openCloseTimingStop3;
     }
 
-    public byte getRoomTemp() {
-        return roomTemp;
+    public byte getRoomTempOpen() {
+        return roomTempOpen;
     }
 
-    public void setRoomTemp(byte roomTemp) {
-        this.roomTemp = roomTemp;
+    public void setRoomTempOpen(byte roomTempOpen) {
+        this.roomTempOpen = roomTempOpen;
     }
 
+    public byte getRoomTempClose() {
+        return roomTempClose;
+    }
+
+    public void setRoomTempClose(byte roomTempClose) {
+        this.roomTempClose = roomTempClose;
+    }
 
     public String getStartMon() {
         return startMon;

@@ -138,4 +138,52 @@ public class DevicePresenter extends BasePresenter {
     }
 
 
+    public void queryRoomList(int curPage, int pageSize, String unitCode) {
+        deviceModel.queryRoomList(curPage, pageSize, unitCode).subscribe((result->{
+            if (result.getResultCode() == NetConstant.ERR_CODE_SUCCESS) {
+                mBaseView.success(NetConstant.APP_MSG_QUERY_ROOM_LIST, result);
+            } else {
+                mBaseView.fail(NetConstant.APP_MSG_QUERY_ROOM_LIST, result.getResultCode(), result.getResultMsg());
+            }
+        }), (e)->{
+            mBaseView.fail(NetConstant.APP_MSG_QUERY_ROOM_LIST, NetConstant.CODE_SYS_EXCEPTION, NetConstant.MSG_TIP_SYSTEM_ERROR);
+        });
+    }
+
+    public void openRoom(String unitCode, String roomId, String roomName) {
+        deviceModel.openRoom(unitCode, roomId, roomName).subscribe((result)-> {
+            if (result.getResultCode() == NetConstant.ERR_CODE_SUCCESS) {
+                mBaseView.success(NetConstant.APP_MSG_OPEN_ROOM, result);
+            } else {
+                mBaseView.fail(NetConstant.APP_MSG_OPEN_ROOM, result.getResultCode(), result.getResultMsg());
+            }
+        }, (e)->{
+            mBaseView.fail(NetConstant.APP_MSG_OPEN_ROOM, NetConstant.CODE_SYS_EXCEPTION, NetConstant.MSG_TIP_SYSTEM_ERROR);
+        });
+    }
+
+    public void closeRoom(String unitCode, String roomId, String roomName) {
+        deviceModel.closeRoom(unitCode, roomId, roomName).subscribe((result)->{
+            if (result.getResultCode() == NetConstant.ERR_CODE_SUCCESS) {
+                mBaseView.success(NetConstant.APP_MSG_CLOSE_ROOM, result);
+            } else {
+                mBaseView.fail(NetConstant.APP_MSG_CLOSE_ROOM, result.getResultCode(), result.getResultMsg());
+            }
+        }, (e)->{
+            mBaseView.fail(NetConstant.APP_MSG_CLOSE_ROOM, NetConstant.CODE_SYS_EXCEPTION, NetConstant.MSG_TIP_SYSTEM_ERROR);
+        });
+    }
+
+
+    public void setRoomTemp(String unitCode, String roomId, String roomName, String temp) {
+        deviceModel.setRoomTemp(unitCode, roomId, roomName, temp).subscribe((result)->{
+            if (result.getResultCode() == NetConstant.ERR_CODE_SUCCESS) {
+                mBaseView.success(NetConstant.APP_MSG_SET_ROOM_TEMP, result);
+            } else {
+                mBaseView.fail(NetConstant.APP_MSG_SET_ROOM_TEMP, result.getResultCode(), result.getResultMsg());
+            }
+        }, (e)->{
+            mBaseView.fail(NetConstant.APP_MSG_SET_ROOM_TEMP, NetConstant.CODE_SYS_EXCEPTION, NetConstant.MSG_TIP_SYSTEM_ERROR);
+        });
+    }
 }

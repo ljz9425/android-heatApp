@@ -1,6 +1,5 @@
 package com.whisht.heatapp.view.fragment;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,24 +15,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.whisht.heatapp.R;
-import com.whisht.heatapp.autoupdate.IUpdate;
 import com.whisht.heatapp.constant.NetConstant;
-import com.whisht.heatapp.entity.AlarmInfo;
-import com.whisht.heatapp.entity.DeviceInfo;
 import com.whisht.heatapp.entity.StatDayInfo;
 import com.whisht.heatapp.entity.base.BaseResp;
 import com.whisht.heatapp.entity.http.resp.StatDayResp;
 import com.whisht.heatapp.presenter.StatPresenter;
 import com.whisht.heatapp.utils.CommonUtils;
-import com.whisht.heatapp.view.activity.DetailActive;
 import com.whisht.heatapp.view.activity.StatActivity;
-import com.whisht.heatapp.view.adapter.DeviceItemAdapter;
 import com.whisht.heatapp.view.adapter.StatDayItemAdapter;
 import com.whisht.heatapp.view.base.BaseFragment;
 import com.yatoooon.screenadaptation.ScreenAdapterTools;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -111,8 +103,17 @@ public class FragmentStatList extends BaseFragment {
                 lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
             }
         });
+        isPrepared = true;
         initData();
         return view;
+    }
+
+    @Override
+    public void lazyLoad() {
+//        if (!isVisible || !isPrepared) {
+//            return;
+//        }
+//        initData();
     }
 
     @OnClick({R.id.sdi_start, R.id.sdi_stop, R.id.sdi_btn_stat})
@@ -172,10 +173,6 @@ public class FragmentStatList extends BaseFragment {
     }
 
     @Override
-    public void init() {
-    }
-
-    @Override
     public void hide() {
     }
 
@@ -195,7 +192,9 @@ public class FragmentStatList extends BaseFragment {
                 canLoad = curPage++ < resp.getMaxPageSize();
                 if (null == infoList || infoList.size() <= 0) {
                     swipeRefreshStat.setRefreshing(false);
-                    showToastMsg("暂无数据");
+                    if (isVisible) {
+                        showToastMsg("暂无数据");
+                    }
                     return;
                 }
                 int itemPosition;
@@ -246,10 +245,5 @@ public class FragmentStatList extends BaseFragment {
     public void OnExit(boolean isMustNeed, int sign) {
 
     }
-
-    private AlertDialog dialog;
-    private IUpdate update = null;
-    int versionCode = 0;
-
 
 }

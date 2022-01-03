@@ -53,6 +53,7 @@
                     android:layout_height="wrap_content"
                     android:text="UNIT NAME"
                     android:textSize="45px"
+                    android:textStyle="bold"
                     android:textColor="@color/color_3b3b3b"
                     android:layout_marginLeft="20px"/>
                 <TextView

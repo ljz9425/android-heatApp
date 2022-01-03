@@ -122,7 +122,7 @@ public class FragmentDetailStatus extends BaseFragment {
         swipeRefreshDevice.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                init();
+                devicePresenter.queryDeviceStatus(unitCode);
             }
         });
         di_run_status.setOnSetupClickListener(new DetailItem.ViewDetailClick() {
@@ -191,24 +191,23 @@ public class FragmentDetailStatus extends BaseFragment {
                 builder.show();
             }
         });
-        init();
+        isPrepared = true;
+        devicePresenter.queryDeviceStatus(unitCode);
         return view;
     }
 
     @Override
-    public void init() {
-        devicePresenter.queryDeviceStatus(unitCode);
+    public void lazyLoad() {
+//        if (!isPrepared) {// if (!isVisible || !isPrepared) {
+//            return;
+//        }
+//        devicePresenter.queryDeviceStatus(unitCode);
     }
 
     @Override
     public void hide() {
-    }
 
-    @Override
-    public void onResume() {
-        super.onResume();
     }
-
 
     @Override
     public void success(int processId, BaseResp result) {
@@ -264,16 +263,16 @@ public class FragmentDetailStatus extends BaseFragment {
                     di_elec_c.setValue(statusResp.getElecC());
                 }
                 if (!StringUtils.isEmpty(statusResp.getActivePower())) {
-                    di_power_active.setValue(statusResp.getActivePower());
+                    di_power_active.setValue(statusResp.getActivePower() + "KW");
                 }
                 if (!StringUtils.isEmpty(statusResp.getTotalPower())) {
-                    di_power_total.setValue(statusResp.getTotalPower());
+                    di_power_total.setValue(statusResp.getTotalPower() + "KWH");
                 }
                 if (!StringUtils.isEmpty(statusResp.getHeatCurFlow())) {
                     di_heat_flow.setValue(statusResp.getHeatCurFlow());
                 }
-                if (!StringUtils.isEmpty(statusResp.getHeatCurFlow())) {
-                    di_heat_total_flow.setValue(statusResp.getHeatCurFlow());
+                if (!StringUtils.isEmpty(statusResp.getHeatTotalFlow())) {
+                    di_heat_total_flow.setValue(statusResp.getHeatTotalFlow());
                 }
                 if (!StringUtils.isEmpty(statusResp.getHeatPower())) {
                     di_heat_power.setValue(statusResp.getHeatPower());
@@ -293,11 +292,11 @@ public class FragmentDetailStatus extends BaseFragment {
                 if (!StringUtils.isEmpty(statusResp.getSendPressure())) {
                     di_pressure_back.setValue(statusResp.getSendPressure());
                 }
-                //关闭下拉加载框
-                swipeRefreshDevice.setRefreshing(false);
                 break;
             default:
         }
+        //关闭下拉加载框
+        swipeRefreshDevice.setRefreshing(false);
 
     }
 

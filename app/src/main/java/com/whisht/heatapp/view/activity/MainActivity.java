@@ -112,14 +112,9 @@ public class MainActivity extends BaseFragmentActivity {
                 mainViewpager.setCurrentItem(tab.getPosition());
                 currentFragment = adapter.getCurrentFragment(tab.getPosition());
                 if(tab.getPosition()==0) {
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            currentFragment.init();
-                        }
-                    }, 1000);
+//                    new Handler().postDelayed(() -> currentFragment.lazyLoad(), 1000);
                 }else{
-                    currentFragment.init();
+                    currentFragment.lazyLoad();
                 }
             }
 

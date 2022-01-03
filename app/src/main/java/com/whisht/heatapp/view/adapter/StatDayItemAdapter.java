@@ -91,7 +91,7 @@ public class StatDayItemAdapter extends RecyclerView.Adapter {
             ll_arrow.setVisibility(bArrow ? View.VISIBLE : View.GONE);
             ll_times.setVisibility(bOpenDesc ? View.VISIBLE : View.GONE);
             if (bArrow) {
-                tv_unit.setText(dayInfo.getUnitName());
+                tv_unit.setText("【" + dayInfo.getUnitName() + "】");
                 ll_layout.setOnClickListener(v -> itemClick.onClick(dayInfo));
             } else {
                 tv_unit.setText(dayInfo.getDate());

@@ -1,7 +1,7 @@
 package com.whisht.heatapp.view.fragment;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +14,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.whisht.heatapp.R;
-import com.whisht.heatapp.autoupdate.IUpdate;
 import com.whisht.heatapp.entity.base.BaseResp;
 import com.whisht.heatapp.view.adapter.TabFragmentAdapter;
 import com.whisht.heatapp.view.base.BaseFragment;
@@ -33,6 +32,8 @@ public class MainActivityFragmentStat extends BaseFragment {
     ViewPager viewPagerStat;
     @BindView(R.id.titleName)
     TextView tv_title;
+
+    private BaseFragment currentFragment;
     List<Fragment> fragmentList = new ArrayList<>();
 
     @Override
@@ -48,17 +49,23 @@ public class MainActivityFragmentStat extends BaseFragment {
         unbinder = ButterKnife.bind(this, view);
         tv_title.setText(R.string.main_menu_index_title);
         initView();
+        isPrepared = true;
+        lazyLoad();
         return view;
     }
 
+    @Override
+    public void lazyLoad() {
+
+    }
+
     private void initView() {
-        String[] titles = {"能耗日报", "能耗月报", "能耗年报", "能耗日分析", "能耗月分析"};
+        String[] titles = {"能耗日报", "能耗月报"};
         TabFragmentAdapter adapter = new TabFragmentAdapter(getContext(), getActivity().getSupportFragmentManager(), titles);
         fragmentList.add(new FragmentStatList());
         fragmentList.add(new FragmentStatMonth());
-        fragmentList.add(new FragmentStatYear());
-        fragmentList.add(new FragmentHistory());
-        fragmentList.add(new FragmentHistory());
+//        fragmentList.add(new FragmentHistory());
+//        fragmentList.add(new FragmentHistory());
         adapter.setFragments(fragmentList);
         this.viewPagerStat.setAdapter(adapter);
         this.tabLayoutStat.setupWithViewPager(this.viewPagerStat);
@@ -68,10 +75,32 @@ public class MainActivityFragmentStat extends BaseFragment {
                 tab.setCustomView(adapter.getTabView(i));
             }
         }
+        //关联切换
+        viewPagerStat.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayoutStat));
+        tabLayoutStat.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPagerStat.setCurrentItem(tab.getPosition());
+                currentFragment = (BaseFragment) fragmentList.get(tab.getPosition());
+                if(tab.getPosition()==0) {
+//                    new Handler().postDelayed(() -> currentFragment.lazyLoad(), 1000);
+                } else{
+                    currentFragment.lazyLoad();
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                ((BaseFragment)fragmentList.get(tab.getPosition())).hide();
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
-    @Override
-    public void init() {
-    }
+
 
     @Override
     public void hide() {
@@ -120,10 +149,5 @@ public class MainActivityFragmentStat extends BaseFragment {
     public void OnExit(boolean isMustNeed, int sign) {
 
     }
-
-    private AlertDialog dialog;
-    private IUpdate update = null;
-    int versionCode = 0;
-
 
 }

@@ -1,6 +1,7 @@
 package com.whisht.heatapp.view.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.whisht.heatapp.R;
 import com.whisht.heatapp.view.adapter.TabFragmentAdapter;
+import com.whisht.heatapp.view.base.BaseFragment;
 import com.whisht.heatapp.view.base.BaseFragmentActivity;
 import com.whisht.heatapp.view.base.HeatBaseView;
 import com.whisht.heatapp.view.fragment.FragmentAlarm;
@@ -28,6 +30,8 @@ public class DetailActive extends BaseFragmentActivity implements HeatBaseView.T
     TabLayout tabLayoutDetail;
     @BindView(R.id.detail_viewPager)
     ViewPager viewPagerDetail;
+
+    private BaseFragment currentFragment = null;
     List<Fragment> fragmentList = new ArrayList<>();
 
     @Override
@@ -61,6 +65,26 @@ public class DetailActive extends BaseFragmentActivity implements HeatBaseView.T
                 tab.setCustomView(adapter.getTabView(i));
             }
         }
+        //关联切换
+        viewPagerDetail.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayoutDetail));
+        tabLayoutDetail.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPagerDetail.setCurrentItem(tab.getPosition());
+                currentFragment = (BaseFragment) fragmentList.get(tab.getPosition());
+                currentFragment.lazyLoad();
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                ((BaseFragment)fragmentList.get(tab.getPosition())).hide();
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     @Override

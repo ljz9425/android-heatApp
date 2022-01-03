@@ -33,6 +33,9 @@ public abstract class BaseFragment extends Fragment implements IBaseView, ILoadi
     protected CommonReceiver commonReceiver;
     protected View mFragmentView = null;
 
+    protected boolean isVisible;
+    protected boolean isPrepared;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -98,14 +101,25 @@ public abstract class BaseFragment extends Fragment implements IBaseView, ILoadi
         }
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        isVisible = getUserVisibleHint();
+        if (isVisible) {
+//            lazyLoad();
+        } else {
+            hide();
+        }
+    }
+
     /**
      * @return true fragment已经处理
      */
     public boolean onBackPressed(){
         return false;
     }
-    public void init() {}
+    public abstract void lazyLoad();
+//    public void init() {}
     public abstract void hide();
-    public void loadMessageData(){};
 
 }

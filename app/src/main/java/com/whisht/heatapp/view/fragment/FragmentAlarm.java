@@ -1,7 +1,5 @@
 package com.whisht.heatapp.view.fragment;
 
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,17 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.whisht.heatapp.R;
-import com.whisht.heatapp.autoupdate.IUpdate;
 import com.whisht.heatapp.constant.NetConstant;
 import com.whisht.heatapp.entity.AlarmInfo;
-import com.whisht.heatapp.entity.DeviceInfo;
-import com.whisht.heatapp.entity.OperatorInfo;
 import com.whisht.heatapp.entity.base.BaseResp;
 import com.whisht.heatapp.entity.http.resp.AlarmResp;
-import com.whisht.heatapp.entity.http.resp.OperatorResp;
 import com.whisht.heatapp.presenter.DevicePresenter;
 import com.whisht.heatapp.view.adapter.AlarmItemAdapter;
-import com.whisht.heatapp.view.adapter.OperatorItemAdapter;
 import com.whisht.heatapp.view.base.BaseFragment;
 import com.yatoooon.screenadaptation.ScreenAdapterTools;
 
@@ -66,7 +59,7 @@ public class FragmentAlarm extends BaseFragment {
         //设置下拉刷新
         swipeRefreshAlarm.setColorSchemeColors(getResources().getColor(R.color.colorLightBlue),
                 getResources().getColor(R.color.colorBule));
-        swipeRefreshAlarm.setOnRefreshListener(() -> intData());
+        swipeRefreshAlarm.setOnRefreshListener(() -> initData());
         //设置列表排列方向
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(mFragmentView.getContext());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -93,10 +86,12 @@ public class FragmentAlarm extends BaseFragment {
                 lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
             }
         });
+        isPrepared = true;
+        initData();
         return view;
     }
 
-    private void intData() {
+    private void initData() {
         curPage = 1;
         canLoad = true;
         if (alarmInfoList != null && alarmInfoList.size() > 0 && null != alarmItemAdapter) {
@@ -107,32 +102,22 @@ public class FragmentAlarm extends BaseFragment {
     }
 
     private void queryNextPageData() {
-        if (canLoad) {
+        if (canLoad && null != devicePresenter) {
             devicePresenter.queryAlarm(curPage, pageSize, unitCode);
         }
     }
 
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-            intData();
-        }
-    }
-
-    @Override
-    public void init() {
+    public void lazyLoad() {
+//        if (!isVisible || !isPrepared) {
+//            return;
+//        }
+//        initData();
     }
 
     @Override
     public void hide() {
     }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
 
     @Override
     public void success(int processId, BaseResp result) {
@@ -143,7 +128,9 @@ public class FragmentAlarm extends BaseFragment {
                 canLoad = curPage++ < resp.getMaxPageSize();
                 if (null == infoList || infoList.size() <= 0) {
                     swipeRefreshAlarm.setRefreshing(false);
-                    showToastMsg("暂无数据");
+                    if (isVisible) {
+                        showToastMsg("暂无数据");
+                    }
                     return;
                 }
                 int itemPosition;
@@ -195,10 +182,5 @@ public class FragmentAlarm extends BaseFragment {
     public void OnExit(boolean isMustNeed, int sign) {
 
     }
-
-    private AlertDialog dialog;
-    private IUpdate update = null;
-    int versionCode = 0;
-
 
 }

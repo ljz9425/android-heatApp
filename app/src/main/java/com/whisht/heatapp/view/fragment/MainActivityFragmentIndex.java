@@ -136,8 +136,15 @@ public class MainActivityFragmentIndex extends BaseFragment {
                 lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
             }
         });
+        isPrepared = true;
         initDeviceData();
         return view;
+    }
+
+    @Override
+    public void lazyLoad() {
+//        if (!isVisible || !isPrepared) return;
+//        initDeviceData();
     }
 
     private void initDeviceData() {

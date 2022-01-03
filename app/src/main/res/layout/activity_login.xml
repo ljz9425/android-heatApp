@@ -122,6 +122,6 @@
         android:layout_width="wrap_content"
         android:layout_marginBottom="30px"
         android:textColor="#707070"
-        android:textSize="36px"
+        android:textSize="40px"
         android:fontFamily="@font/msyh"/>
 </LinearLayout>

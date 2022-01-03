@@ -101,13 +101,17 @@ public class MainActivityFragmentMap extends BaseFragment {
             startActivity(intent);
             return true;
         });
-
+        isPrepared = true;
+        lazyLoad();
         return view;
     }
 
 
     @Override
-    public void init() {
+    public void lazyLoad() {
+        if (!isVisible || !isPrepared) {
+            return;
+        }
         if (null != devicePresenter) {
             devicePresenter.queryDeviceListForMap("");
         }
@@ -154,7 +158,16 @@ public class MainActivityFragmentMap extends BaseFragment {
                     bundle.putString("unitCode", dev.getUnitCode());
                     bundle.putString("unitName", dev.getUnitName());
                     LatLng point = new LatLng(Double.parseDouble(dev.getLat()), Double.parseDouble(dev.getLon()));
-                    BitmapDescriptor bitmap = BitmapDescriptorFactory.fromResource(R.drawable.pin_open);
+                    BitmapDescriptor bitmap = BitmapDescriptorFactory.fromResource(R.drawable.pin_lock);
+                    if (StringUtils.isEmpty(dev.getFault())) {
+                        if (dev.getStatusDesc().equals("启动")) {
+                            bitmap = BitmapDescriptorFactory.fromResource(R.drawable.pin_open);
+                        } else if (dev.getStatusDesc().equals("停机")) {
+                            bitmap = BitmapDescriptorFactory.fromResource(R.drawable.pin_close);
+                        } else if (dev.getStatusDesc().equals("离线")) {
+                            bitmap = BitmapDescriptorFactory.fromResource(R.drawable.pin_offline);
+                        }
+                    }
                     markerList.add(new MarkerOptions().position(point).icon(bitmap).extraInfo(bundle));
                     //自定义InfoWindow
                     TextView button = new TextView(getContext());
@@ -204,8 +217,6 @@ public class MainActivityFragmentMap extends BaseFragment {
     public void OnExit(boolean isMustNeed, int sign) {
 
     }
-
-    private AlertDialog dialog;
 
 
 }

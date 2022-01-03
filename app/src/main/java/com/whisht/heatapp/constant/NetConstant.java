@@ -13,7 +13,7 @@ public class NetConstant {
     }
 
     //虚拟机
-    public static final String SERVER_DIP1 = "39.98.49.31";//192.168.2.2";//""192.168.1.132";
+    public static final String SERVER_DIP1 = "192.168.1.132";//192.168.2.2";//""192.168.1.132";
     public static final String SERVER_DIP2 = "192.168.2.9";
     public static String SERVER_IP1 = "39.98.49.31";
     public static String SERVER_IP2 = "39.98.49.31";
@@ -82,13 +82,17 @@ public class NetConstant {
     public static final int APP_MSG_QUERY_DEVICE_CONFIG = 106;
     public static final int APP_MSG_SAVE_DEVICE_STATUS = 107;
     public static final int APP_MSG_QUERY_OPERATOR_LOG = 108;
-    public static final int APP_MSG_QUERY_ALARM = 108;
-    public static final int APP_MSG_QUERY_DEVICE_LIST_FOR_MAP = 109;
+    public static final int APP_MSG_QUERY_ALARM = 109;
+    public static final int APP_MSG_QUERY_ROOM_LIST = 110;
+    public static final int APP_MSG_QUERY_DEVICE_LIST_FOR_MAP = 111;
+    public static final int APP_MSG_OPEN_ROOM = 113;
+    public static final int APP_MSG_CLOSE_ROOM = 114;
+    public static final int APP_MSG_SET_ROOM_TEMP = 115;
 
-    public static final int APP_MSG_STAT_DAY = 110;
-    public static final int APP_MSG_STAT_DAY_UNIT = 111;
-    public static final int APP_MSG_STAT_MONTH = 112;
-    public static final int APP_MSG_STAT_MONTH_UNIT = 113;
-    public static final int APP_MSG_STAT_YEAR = 114;
-    public static final int APP_MSG_STAT_YEAR_UNIT = 115;
+    public static final int APP_MSG_STAT_DAY = 200;
+    public static final int APP_MSG_STAT_DAY_UNIT = 201;
+    public static final int APP_MSG_STAT_MONTH = 202;
+    public static final int APP_MSG_STAT_MONTH_UNIT = 203;
+    public static final int APP_MSG_STAT_YEAR = 204;
+    public static final int APP_MSG_STAT_YEAR_UNIT = 205;
 }

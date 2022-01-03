@@ -31,21 +31,21 @@ public class FragmentHistory extends BaseFragment {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         ScreenAdapterTools.getInstance().loadView(view);
         unbinder = ButterKnife.bind(this, view);
+        isPrepared = true;
+        lazyLoad();
         return view;
     }
 
-
     @Override
-    public void init() {
+    public void lazyLoad() {
+//        if (!isVisible || !isPrepared) {
+//            return;
+//        }
     }
 
     @Override
     public void hide() {
-    }
 
-    @Override
-    public void onResume() {
-        super.onResume();
     }
 
 
